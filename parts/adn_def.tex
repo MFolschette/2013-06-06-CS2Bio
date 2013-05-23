@@ -1,0 +1,95 @@
+% Définition du Réseaux Discrets Asynchrones
+
+\newcommand{\F}{\mathbf{F}}
+
+\begin{frame}
+  \frametitle{The Asynchronous Discrete Networks (ADN)}
+  \framesubtitle{\tcite{\todo{}}}
+
+\begin{itemize}
+  \item The set of components: $N = \{ a, b, c, \dots \}$
+  \item The local states (of one component $a$): $x^a \in \F^a = \segm{0}{l_a}$
+  \item The global states (of all components): $\F = \F^a \times \F^b \times \F^c \times \dots$  % \underset{a \in N}{\times}
+  \item The evolution function (of one component $a$): $f^a : \F \rightarrow \F^a$
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{ccc}
+  \begin{tabular}[b]{c|c|c}
+    \multicolumn{2}{c|}{$X$} & \multirow{2}{*}{$f^a(X)$} \\
+  \cline{1-2}
+    $x^a$ & $x^b$ & \\
+  \hline
+    $0$ & $0$ & $1$ \\
+    $0$ & $1$ & $0$ \\
+    $1$ & $0$ & $0$ \\
+    $1$ & $1$ & $0$
+  \end{tabular}
+&
+  \begin{tabular}[b]{c|c|c}
+    \multicolumn{2}{c|}{$X$} & \multirow{2}{*}{$f^b(X)$} \\
+  \cline{1-2}
+    $x^a$ & $x^b$ & \\
+  \hline
+    $0$ & $0$ & $1$ \\
+    $0$ & $1$ & $0$ \\
+    $1$ & $0$ & $0$ \\
+    $1$ & $1$ & $0$
+  \end{tabular}
+&
+  \begin{tabular}[b]{c|c|c}
+    \multicolumn{2}{c|}{$X$} & \multirow{2}{*}{$f^z(X)$} \\
+  \cline{1-2}
+    $x^a$ & $x^b$ & \\
+  \hline
+    $0$ & $0$ & $0$ \\
+    $0$ & $1$ & $1$ \\
+    $1$ & $0$ & $1$ \\
+    $1$ & $1$ & $2$
+  \end{tabular}
+\end{tabular}
+
+\bigskip
+
+\begin{tikzpicture}[adn]
+  \path[use as bounding box] (-0.7,-0.7) rectangle (2.5,2);
+  \node[inner sep=0] (z) at (2,0.75) {z};
+  \node[inner sep=0] (a) at (0,1.5) {a};
+  \node[inner sep=0] (b) at (0,0) {b};
+  \path
+    node[elabel, above=-1em of a] {$\segm{0}{1}$}
+    node[elabel, below=-1em of b] {$\segm{0}{1}$}
+    node[elabel, below=-1em of z] {$\segm{0}{2}$};
+  \path
+    (a) edge[loop left] (a)
+    (b) edge[loop left] (b)
+    (a) edge[bend right] (b)
+    (b) edge[bend right] (a)
+    (a) edge (z)
+    (b) edge (z);
+\end{tikzpicture}
+\end{center}
+
+\todo{Retirer les arcs vers $a$ et $b$ ?}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{The Asynchronous Discrete Networks (ADN)}
+  \framesubtitle{\tcite{\todo{}}}
+
+\todo{Example de GE sur l'exemple ?}
+
+Studying an ADN:
+
+$$|\F| = \prod_{a \in N} l_a$$
+
+\f Exponential!
+
+For Boolean models: $|\F| = 2^{|N|}$
+
+For multivalued models: … even more! $|\F| \geq 2^{|N|}$
+
+\end{frame}
