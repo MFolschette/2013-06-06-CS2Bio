@@ -143,7 +143,7 @@
 \TSetTick{ab}{1}{01}
 \TSetTick{ab}{2}{10}
 \TSetTick{ab}{3}{11}
-\TSort{(4,0.5)}{ab}{4}{l}
+\TSort{(4,0.5)}{ab}{4}{r}
 
 \ifthenelse{\equal{#2}{abstr}}{
 % Abstraction de la màj de la sc
@@ -152,17 +152,17 @@
 }{
 % Actions de màj de la sc
 \THit{a_1}{#1}{ab_0}{.west}{ab_2}
-\THit{a_1}{#1}{ab_1}{.west}{ab_3}
-\path[bounce,bend left] \TBounce{ab_0}{}{ab_2}{.south} \TBounce{ab_1}{}{ab_3}{.south} ;
-\THit{a_0}{#1}{ab_2}{.west}{ab_0}
-\THit{a_0}{#1}{ab_3}{.west}{ab_1}
-\path[bounce,bend right] \TBounce{ab_2}{}{ab_0}{.north} \TBounce{ab_3}{}{ab_1}{.north} ;
-\THit{b_0}{#1}{ab_3}{.west}{ab_2}
-\THit{b_0}{#1}{ab_1}{.west}{ab_0}
-\THit{b_1}{#1}{ab_0}{.west}{ab_1}
-\THit{b_1}{#1}{ab_2}{.west}{ab_3}
-\path[bounce,bend right] \TBounce{ab_1}{}{ab_0}{.north} \TBounce{ab_3}{}{ab_2}{.north} ;
-\path[bounce,bend left] \TBounce{ab_0}{}{ab_1}{.south} \TBounce{ab_2}{}{ab_3}{.south} ;
+\THit{a_1}{#1}{ab_1}{.160}{ab_3}
+\path[bounce,bend left] \TBounce{ab_0}{}{ab_2}{.240} \TBounce{ab_1}{}{ab_3}{.south west} ;
+\THit{a_0}{#1}{ab_2}{.160}{ab_0}
+\THit{a_0}{#1}{ab_3}{.150}{ab_1}
+\path[bounce,bend right] \TBounce{ab_2}{}{ab_0}{.north west} \TBounce{ab_3}{}{ab_1}{.120} ;
+\THit{b_0}{#1}{ab_3}{.190}{ab_2}
+\THit{b_0}{#1}{ab_1}{.200}{ab_0}
+\THit{b_1}{#1}{ab_0}{.210}{ab_1}
+\THit{b_1}{#1}{ab_2}{.200}{ab_3}
+\path[bounce,bend right] \TBounce{ab_1}{}{ab_0}{.north} \TBounce{ab_3}{}{ab_2}{.120} ;
+\path[bounce,bend left] \TBounce{ab_0}{}{ab_1}{.240} \TBounce{ab_2}{}{ab_3}{.south} ;
 }
 
 %Actions entre a et b
@@ -170,8 +170,8 @@
 \THit{b_1}{selfhit}{b_1}{.west}{b_0}
 \THit{a_0}{bend right=50}{b_0}{.west}{b_1}
 \THit{b_0.south west}{bend left=90}{a_0}{.west}{a_1}
-\path[bounce, bend right] \TBounce{a_1}{}{a_0}{.north west} \TBounce{b_1}{}{b_0}{.north west} ;
-\path[bounce, bend left] \TBounce{a_0}{}{a_1}{.south west} \TBounce{b_0}{}{b_1}{.south west} ;
+\path[bounce,bend right] \TBounce{a_1}{}{a_0}{.north west} \TBounce{b_1}{}{b_0}{.north west} ;
+\path[bounce,bend left] \TBounce{a_0}{}{a_1}{.south west} \TBounce{b_0}{}{b_1}{.south west} ;
 
 % Arc sortant de la sc
 \THit{ab_3}{}{z_0}{.west}{z_1}
@@ -182,11 +182,11 @@
 
 %%% Structure abstraite pour l'atteignabilité avec priorités %%%
 \def \priostatic {
-\node[Aproc] (c1) {$c_1$};
-\node[Aobj,right of=c1] (c01) {$\PHobj{c_0}{c_1}$};
-\node[Asol,right of=c01] (c01s) {};
+\node[Aproc] (z1) {$z_1$};
+\node[Aobj,right of=z1] (z01) {$\PHobj{z_0}{z_1}$};
+\node[Asol,right of=z01] (z01s) {};
 
-\node[Aproc,right of=c01s] (ab11) {$ab_{11}$};
+\node[Aproc,right of=z01s] (ab11) {$ab_{11}$};
 \node[Asol,right of=ab11] (ab11s) {};
 
 \node[Aproc,above right of=ab11s] (a1) {$a_1$};
@@ -212,9 +212,9 @@
 \node[Asol,right of=a10] (a10s) {};
 
 \path
-(c1) edge (c01)
-(c01) edge (c01s)
-(c01s) edge (ab11)
+(z1) edge (z01)
+(z01) edge (z01s)
+(z01s) edge (ab11)
 (ab11) edge[aSPrio] (ab11s)
 (ab11s) edge (a1) edge (b1)
 

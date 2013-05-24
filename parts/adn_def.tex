@@ -1,6 +1,6 @@
 % Définition du Réseaux Discrets Asynchrones
 
-\newcommand{\F}{\mathbf{F}}
+\newcommand{\Fadn}{\mathbb{F}}
 
 \begin{frame}
   \frametitle{The Asynchronous Discrete Networks (ADN)}
@@ -8,9 +8,9 @@
 
 \begin{itemize}
   \item The set of components: $N = \{ a, b, c, \dots \}$
-  \item The local states (of one component $a$): $x^a \in \F^a = \segm{0}{l_a}$
-  \item The global states (of all components): $\F = \F^a \times \F^b \times \F^c \times \dots$  % \underset{a \in N}{\times}
-  \item The evolution function (of one component $a$): $f^a : \F \rightarrow \F^a$
+  \item The local states (of one component $a$): $x^a \in \Fadn^a = \segm{0}{l_a}$
+  \item The global states (of all components): $\Fadn = \Fadn^a \times \Fadn^b \times \Fadn^c \times \dots$  % \underset{a \in N}{\times}
+  \item The evolution function (of one component $a$): $f^a : \Fadn \rightarrow \Fadn^a$
 \end{itemize}
 
 \begin{center}
@@ -84,12 +84,12 @@
 
 Studying an ADN:
 
-$$|\F| = \prod_{a \in N} l_a$$
+$$|\Fadn| = \prod_{a \in N} l_a$$
 
 \f Exponential!
 
-For Boolean models: $|\F| = 2^{|N|}$
+For Boolean models: $|\Fadn| = 2^{|N|}$
 
-For multivalued models: … even more! $|\F| \geq 2^{|N|}$
+For multivalued models: … even more! $|\Fadn| \geq 2^{|N|}$
 
 \end{frame}

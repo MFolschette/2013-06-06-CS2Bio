@@ -34,6 +34,7 @@
 \colorlet{colorinhgray}{lightred}
 
 \colorlet{colorgray}{lightgray}
+\colorlet{colorhl}{blue}
 
 
 \tikzstyle{boxed ph}=[]
@@ -42,7 +43,7 @@
 %\tikzstyle{black process}=[process, draw=blue, fill=red,text=black,font=\bfseries]
 \tikzstyle{gray process}=[process, draw=black, fill=lightgray]
 \tikzstyle{highlighted process}=[current process, fill=gray]
-\tikzstyle{process box}=[fill=white,draw=black,rounded corners]
+\tikzstyle{process box}=[fill=none,draw=black,rounded corners]
 %\tikzstyle{current process}=[process, draw=black, fill=lightgray]
 \tikzstyle{current process}=[process,fill=blue]
 \tikzstyle{tick label}=[font=\footnotesize]
@@ -54,24 +55,35 @@
 \tikzstyle{ulhit}=[draw=lightgray,fill=lightgray]
 \tikzstyle{pulhit}=[fill=lightgray]
 \tikzstyle{bulhit}=[draw=lightgray]
-%\tikzstyle{hl}=[font=\bfseries,very thick]
+\tikzstyle{hl}=[very thick,colorhl]
 %\tikzstyle{hl2}=[hl]
 %\tikzstyle{nohl}=[font=\normalfont,thin]
 
 \tikzstyle{update}=[draw,->,dashed,shorten >=.7cm,shorten <=.7cm]
 
 \tikzstyle{unprio}=[draw,thin]%[double]
-\tikzstyle{prio}=[draw,very thick,-stealth]%[double]
+\tikzstyle{prio}=[draw,thick,-stealth]%[double]
 
 \tikzstyle{hitless graph}=[every edge/.style={draw=red,-}]
 
-\tikzstyle{aS}=[every edge/.style={draw,->}]
-\tikzstyle{Asol}=[draw,circle,minimum size=5pt,inner sep=0]
-\tikzstyle{Aproc}=[draw]
-\tikzstyle{Aobj}=[]
-\colorlet{colorhl}{notsodarkred}
-\colorlet{colorhlbg}{lightred}
-\tikzstyle{Ahl}=[very thick,fill=colorhlbg,draw=colorhl,text=colorhl]
+\tikzstyle{aS}=[every edge/.style={draw,->,>=stealth}]
+\tikzstyle{Asol}=[draw,circle,minimum size=5pt,inner sep=0,node distance=1cm]
+\tikzstyle{Aproc}=[draw,node distance=1.2cm]
+\tikzstyle{Aobj}=[node distance=1.5cm]
+\tikzstyle{Anos}=[font=\Large]
+
+\tikzstyle{AsolPrio}=[Asol,double]
+\tikzstyle{AprocPrio}=[Aproc,double]
+\tikzstyle{aSPrio}=[aS,double]
+
+\colorlet{colorhlwarn}{notsodarkred}
+\colorlet{colorhlwarnbg}{lightred}
+\tikzstyle{Ahl}=[very thick,fill=colorhlwarnbg,draw=colorhlwarn,text=colorhlwarn]
+\tikzstyle{Ahledge}=[very thick,double=colorhlwarnbg,draw=colorhlwarn,color=colorhlwarn]
+
+
+
+
 
 %\definecolor{darkred}{rgb}{0.5,0,0}
 
