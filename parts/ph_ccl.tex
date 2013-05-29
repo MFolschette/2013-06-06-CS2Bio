@@ -1,0 +1,74 @@
+% Conclusion sur le Process Hitting
+
+\begin{frame}[c]
+  \frametitle{The Process Hitting modeling}
+
+\todo{À réorganiser}
+
+\begin{itemize}
+  \item \tval{Dynamic} modeling with an \tval{atomistic} point of view
+  \begin{fleches}
+    \item Independent actions
+    \item Cooperation modeled with cooperative sorts
+  \end{fleches}
+
+  \smallskip
+  \item Efficient \tval{static analysis}
+  \begin{fleches}
+    \item Reachability of a process can be computed in \tval{polynomial time}\\
+          \quad in the number of sorts
+  \end{fleches}
+
+  \smallskip
+  \item Useful for the study of \tval{large biological models}
+  \begin{fleches}
+    \item Up to hundreds of sorts
+    \item With few expression levels (Boolean or multivalued with $n \leq 4$)
+  \end{fleches}
+
+  \smallskip
+  \item (Future) extensions
+  \begin{fleches}
+    \item Actions with priorities
+    \item Continuous time with clocks?
+  \end{fleches}
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[c]
+  \frametitle{Implementation \& Execution times}
+
+\todo{À réorganiser}
+
+\Pint\tval{: Existing free OCaml library}
+
+\medskip
+\f Compiler + tools for Process Hitting models
+
+\f Documentation \& examples: \lien{http://processhitting.wordpress.com/}
+
+\pause
+\bigskip
+\medskip
+\tval{Computation time for various reachability analyses:}
+
+\medskip
+\small
+\begin{tabular}{r||c|c|c|c||c|c|c|}
+\hline
+\tval{Model} & Sorts & Procs & Actions & States & Biocham$^1$ & libddd$^2$ & \Pint \\\hline
+\tval{\ex{egfr20}} & 35 & 196 & 670 & $2^{64}$ & [3s--$\infty$] & [1s--150s] & \tval{0.007s} \\\hline
+\tval{\ex{tcrsig40}} & 54 & 156 & 301 & $2^{73}$ & [1s--$\infty$] & [0.6s--$\infty$] & \tval{0.004s} \\\hline
+\tval{\ex{tcrsig94}} & 133 & 448 & 1124 & $2^{194}$ & $\infty$ & $\infty$ & \tval{0.030s} \\\hline
+\tval{\ex{egfr104}} & 193 & 748 &  2356 & $2^{320}$ &  $\infty$ & $\infty$ & \tval{0.050s}\\\hline
+\end{tabular}
+
+\medskip
+\quad$^1$ Inria Paris-Rocquencourt/Contraintes\\
+\quad$^2$ LIP6/Move
+
+\cmodels
+\end{frame}

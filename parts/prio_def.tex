@@ -1,6 +1,31 @@
 % Ajout des actions prioritaires pour avoir une équivalence avec les ADN
 
 \begin{frame}
+  \frametitle{Adding cooperations}
+  \framesubtitle{\tcite{\cpmrtcsb}}
+
+\begin{center}\scalebox{\scaleex}{
+\begin{tikzpicture}
+\exphcoop
+\end{tikzpicture}
+}\end{center}
+
+\medskip
+\only<-14>{
+\begin{liste}
+  \item How to introduce some \tval{cooperation} between sorts? \qex{$\PHfrappe{[a_1 \wedge b_1]}{z_1}{z_2}$}
+\pause[4]
+  \item Solution: a \tval{cooperative sort} \qex{$ab$} \only<12->{\quad to express \qex{$a_1 \wedge b_1$}}
+\pause[8]
+  \item Constraint: each configuration is represented by one process \qex{$\PHetat{a_1,b_1} \pause[11]\Rightarrow ab_{11}$}
+\pause[14]
+  \item Advantage: regular sort; drawbacks: complexity, temporal shift
+\end{liste}}
+\end{frame}
+
+
+
+\begin{frame}
   \frametitle{Adapting the expressivity of PH}
 
 Cooperations are too “loose” to express the same as ADN.
