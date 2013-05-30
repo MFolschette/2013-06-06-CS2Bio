@@ -18,6 +18,7 @@
 \definecolor{darkyellow}{rgb}{0.5,0.5,0}
 \definecolor{lightyellow}{rgb}{1,1,0.6}
 \definecolor{darkcyan}{rgb}{0,0.6,0.6}
+\definecolor{lightcyan}{rgb}{0.6,1,1}
 \definecolor{darkorange}{rgb}{0.8,0.2,0}
 \definecolor{notsodarkred}{rgb}{0.8,0,0}
 
@@ -46,6 +47,7 @@
 \tikzstyle{process box}=[fill=none,draw=black,rounded corners]
 %\tikzstyle{current process}=[process, draw=black, fill=lightgray]
 \tikzstyle{current process}=[process,fill=blue]
+\tikzstyle{hl process}=[process,fill=blue!30]
 \tikzstyle{tick label}=[font=\footnotesize]
 \tikzstyle{tick}=[densely dotted] %-
 \tikzstyle{hit}=[->,>=angle 45]
@@ -56,13 +58,15 @@
 \tikzstyle{pulhit}=[fill=lightgray]
 \tikzstyle{bulhit}=[draw=lightgray]
 \tikzstyle{hl}=[very thick,colorhl]
+\tikzstyle{hlb}=[very thick]
 %\tikzstyle{hl2}=[hl]
 %\tikzstyle{nohl}=[font=\normalfont,thin]
 
 \tikzstyle{update}=[draw,->,dashed,shorten >=.7cm,shorten <=.7cm]
 
 \tikzstyle{unprio}=[draw,thin]%[double]
-\tikzstyle{prio}=[draw,thick,-stealth]%[double]
+%\tikzstyle{prio}=[draw,thick,-stealth]%[double]
+\tikzstyle{prio}=[draw,-stealth,double]
 
 \tikzstyle{hitless graph}=[every edge/.style={draw=red,-}]
 

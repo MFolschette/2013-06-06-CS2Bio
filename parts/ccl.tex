@@ -6,20 +6,25 @@
 
 \todo{À revoir}
 
-\tval{Workflow}:
-\begin{itemize}
-  \item Read and translate the models with \tval{OCaml}\\
-        \quad\f Integrated to \Pint\\
-  \item Express the problem in \tval{ASP} (logic programming)\\
-        \quad\f Solved with \tval{Clingo} (\tval{Gringo} + \tval{Clasp})
-\end{itemize}
+Integrated into \Pint
 
-\bigskip
-\tval{Complexity}: linear in the number of genes, exponential in the number of regulators of one gene
+\begin{itemize}
+  \item Building the graph:
+  \begin{itemize}
+    \item Polynomial in the number of sorts
+    \item Exponential in the number of processes in each sort
+  \end{itemize}
+  \item Analysing the graph:
+  \begin{itemize}
+    \item Polynomial in the size of the graph
+  \end{itemize}
+\end{itemize}
 
 \pause
 \bigskip
 \small
+\todo{Adapter}
+
 \begin{tabular}{r||r@{+}l|c|c||c|c||c|c|}
 \multicolumn{5}{c||}{Model specifications} & \multicolumn{2}{c||}{IG inference} & \multicolumn{2}{c|}{Parameters inference}\\
 \hline
