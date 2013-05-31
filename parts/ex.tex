@@ -356,7 +356,7 @@
 % Structure abstraite / Sous-approximation / Ok
 \def \sauyes {%
 \begin{tikzpicture}[aS,node distance=1.1cm,shorthandon]
-\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,2.2);
+%\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,2.2);
 
 \node[Aobj] (d02) {$\PHobjectif{d_0}{d_2}$};
 \node[Aproc,above of=d02] (d2) {$d_2$};
@@ -404,7 +404,7 @@
 % Structure abstraite / Sous-approximation / Inconclusif
 \def \sauinconc {%
 \begin{tikzpicture}[aS,node distance=1.1cm,shorthandon]
-\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,2.2);
+%\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,2.2);
 
 \node[Aobj] (d02) {$\PHobjectif{d_0}{d_2}$};
 \node[Aproc,above of=d02] (d2) {$d_2$};
@@ -474,7 +474,7 @@
 % Structure abstraite / Sur-approximation / Non
 \def \saono {%
 \begin{tikzpicture}[aS,node distance=1.1cm,shorthandon]
-\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,1.15);
+%\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,1.15);
 
 \node[Aobj] (d12) {$\PHobjectif{d_1}{d_2}$};
 \node[Asol,above right of=d12] (d12s1) {};
@@ -515,7 +515,7 @@
 % Structure abstraite / Sur-approximation / Inconclusif
 \def \saoinconc {%
 \begin{tikzpicture}[aS,node distance=1.1cm,shorthandon]
-\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,1.15);
+%\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,1.15);
 
 \node[Aobj] (d02) {$\PHobjectif{d_0}{d_2}$};
 \node[Asol,above right of=d02] (d02s1) {};
@@ -543,11 +543,13 @@
 \node[Aobj,right of=b1] (b11) {$\PHobjectif{b_1}{b_1}$};
 \node[Asol,right of=b11] (b11s) {};
 
-\node<\tokp>[orange, font=\bfseries,below of=a11s] (kp) {Key processes};
-\path<\tokp>[orange, thick]
+\uncover<\tokp>{
+\node[orange, font=\bfseries,below of=a11s] (kp) {Key processes};
+\path[orange, thick]
         (kp) edge (a1)
         (kp) edge (b0)
-;
+;}
+
 \path
 (d02) edge (d02s1) edge (d02s2) (d02s1) edge (b2) (d02s2) edge (b1) edge (b0)
 (a11) edge (a11s)

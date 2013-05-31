@@ -103,11 +103,8 @@
 % Style des citations
 \newcommand{\tscite}[1]{\textcolor{couleurcit}{#1}}
 \newcommand{\tcite}[1]{\textcolor{couleurcit}{[#1]}}
+\newcommand{\tcitebullet}{~~$\textcolor{couleurcit}{\bullet}$~}
 
-\newcommand{\cpmrtcsb}{Paulevé, Magnin, Roux in Transactions on Computational Systems Biology, 2011}
-\newcommand{\cpmrmscs}{Paulevé, Magnin, Roux in Mathematical Structures in Computer Science, 2012}
-\newcommand{\cfpimrcmsb}{{\scriptsize Folschette, Paulevé, Inoue, Magnin, Roux in Computational Methods in Systems Biology, 2012}}
-\newcommand{\crcbmfma}{Richard, Comet, Bernot in Modern Formal Methods and App., 2006}
 
 
 % Style de texte mis en valeur
@@ -234,11 +231,19 @@ Loïc PAULEVÉ, Morgan MAGNIN, Olivier ROUX
 
 
 \input{parts/ex.tex}
-\newcommand{\cmodels}{\bigskip
-\quad\tval{\ex{egfr20}}: \tcite{Epidermal Growth Factor Receptor, by Özgür Sahin \textit{et al.}}\\
-\quad\tval{\ex{egfr104}}: \tcite{Epidermal Growth Factor Receptor, by Regina Samaga \textit{et al.}}\\
-\quad\tval{\ex{tcrsig40}}: \tcite{T-Cell Receptor Signaling, by Steffen Klamt \textit{et al.}}\\
-\quad\tval{\ex{tcrsig94}}: \tcite{T-Cell Receptor Signaling, by Julio Saez-Rodriguez \textit{et al.}}\\}
+
+\newcommand{\citeegfra}{\quad\tval{\ex{egfr20}}: \tcite{Epidermal Growth Factor Receptor, by Özgür Sahin \textit{et al.}}}
+\newcommand{\citeegfrb}{\quad\tval{\ex{egfr104}}: \tcite{Epidermal Growth Factor Receptor, by Regina Samaga \textit{et al.}}}
+\newcommand{\citetcrsiga}{\quad\tval{\ex{tcrsig40}}: \tcite{T-Cell Receptor Signaling, by Steffen Klamt \textit{et al.}}}
+\newcommand{\citetcrsigb}{\quad\tval{\ex{tcrsig94}}: \tcite{T-Cell Receptor Signaling, by Julio Saez-Rodriguez \textit{et al.}}}
+
+\newcommand{\citemodels}{\bigskip\citeegfra\\\citeegfrb\\\citetcrsiga\\\citetcrsigb}
+
+\newcommand{\citepmrtcsb}{Paulevé, Magnin, Roux in Transactions on Computational Systems Biology, 2011}
+\newcommand{\citepmrmscs}{Paulevé, Magnin, Roux in Mathematical Structures in Computer Science, 2012}
+\newcommand{\citefpimrcmsb}{{\scriptsize Folschette, Paulevé, Inoue, Magnin, Roux in Computational Methods in Systems Biology, 2012}}
+%\newcommand{\crcbmfma}{Richard, Comet, Bernot in Modern Formal Methods and App., 2006}
+\newcommand{\citedejong}{de Jong in Journal of Computational Biology, 2002}
 
 
 

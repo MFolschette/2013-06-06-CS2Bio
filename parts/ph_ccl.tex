@@ -1,6 +1,6 @@
 % Conclusion sur le Process Hitting
 
-\begin{frame}[c]
+\begin{comment}
   \frametitle{The Process Hitting modeling}
 
 \todo{À réorganiser}
@@ -34,7 +34,7 @@
   \end{fleches}
 \end{itemize}
 
-\end{frame}
+\end{comment}
 
 
 
@@ -43,7 +43,7 @@
 
 \todo{À réorganiser}
 
-\Pint\tval{: Existing free OCaml library}
+\tval{Existing free OCaml library:} \Pint
 
 \medskip
 \f Compiler + tools for Process Hitting models
@@ -60,8 +60,8 @@
 \begin{tabular}{r||c|c|c|c||c|c|c|}
 \hline
 \tval{Model} & Sorts & Procs & Actions & States & Biocham$^1$ & libddd$^2$ & \Pint \\\hline
-\tval{\ex{egfr20}} & 35 & 196 & 670 & $2^{64}$ & [3s--$\infty$] & [1s--150s] & \tval{0.007s} \\\hline
-\tval{\ex{tcrsig40}} & 54 & 156 & 301 & $2^{73}$ & [1s--$\infty$] & [0.6s--$\infty$] & \tval{0.004s} \\\hline
+\tval{\ex{egfr20}} & 35 & 196 & 670 & $2^{64}$ & [3s -- $\infty$] & [1s -- 150s] & \tval{0.007s} \\\hline
+\tval{\ex{tcrsig40}} & 54 & 156 & 301 & $2^{73}$ & [1s -- $\infty$] & [0.6s -- $\infty$] & \tval{0.004s} \\\hline
 \tval{\ex{tcrsig94}} & 133 & 448 & 1124 & $2^{194}$ & $\infty$ & $\infty$ & \tval{0.030s} \\\hline
 \tval{\ex{egfr104}} & 193 & 748 &  2356 & $2^{320}$ &  $\infty$ & $\infty$ & \tval{0.050s}\\\hline
 \end{tabular}
@@ -70,5 +70,6 @@
 \quad$^1$ Inria Paris-Rocquencourt/Contraintes\\
 \quad$^2$ LIP6/Move
 
-\cmodels
+\citemodels
+
 \end{frame}

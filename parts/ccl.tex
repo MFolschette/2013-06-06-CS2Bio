@@ -1,12 +1,11 @@
 % Performances et conclusion
 
-
 \begin{frame}[c]
   \frametitle{Implementation}
 
 \todo{À revoir}
 
-Integrated into \Pint
+Complexity:
 
 \begin{itemize}
   \item Building the graph:
@@ -25,24 +24,24 @@ Integrated into \Pint
 \small
 \todo{Adapter}
 
-\begin{tabular}{r||r@{+}l|c|c||c|c||c|c|}
-\multicolumn{5}{c||}{Model specifications} & \multicolumn{2}{c||}{IG inference} & \multicolumn{2}{c|}{Parameters inference}\\
+\begin{tabular}{r||c|c|c|c||c|c|c|}
 \hline
-\tval{Name} & S & CS & P & A & $\Delta t$ & Edges & $\Delta t$ & Parameters\\
-\hline
-  \tval{\ex{egfr20}} & \tval{20} & 22 & 152 & 399 & \tval{1s} & 50 & \tval{1s} & 191\\
-\hline
-  \tval{\ex{tcrsig40}} & \tval{40} & 14 & 156 & 301 & \tval{1s} & 54 & \tval{1s} & 143\\
-\hline
-  \tval{\ex{tcrsig94}} & \tval{94} & 39 & 448 & 1124 & \tval{13s} & 169 & $\infty$ & $2.10^9$\\
-\hline
-  \tval{\ex{egfr104}} & \tval{104} & 89~ & 748 & 2356 & \tval{4min} & 241 & \tval{1min 30s} & $1.10^6 / 2.10^6$\\
-\hline
+\tval{Model} & Sorts & Procs & Actions & States & libddd$^1$ & \Pint \\\hline
+%\tval{\ex{egfr20}} & 35 & 196 & 670 & $2^{64}$ & [3s--$\infty$] & [1s--150s] & \tval{0.007s} \\\hline
+%\tval{\ex{tcrsig40}} & 54 & 156 & 301 & $2^{73}$ & [1s--$\infty$] & [0.6s--$\infty$] & \tval{0.004s} \\\hline
+\tval{\ex{tcrsig94}} & 133 & 448 & 1124 & $2^{194}$ & 13min -- $\infty$ & \tval{0.8s} \\\hline
+%\tval{\ex{egfr104}} & 193 & 748 &  2356 & $2^{320}$ &  $\infty$ & $\infty$ & \tval{0.050s}\\\hline
 \end{tabular}
 
-S = Sorts \quad CS = Cooperative sorts \quad P = Processes \quad A = Actions
+\medskip
+\quad$^1$ LIP6/Move
 
-\cmodels
+\todo{taille mémoire ? nbr sortes coopératives ?}
+%S = Sorts \quad CS = Cooperative sorts \quad P = Processes \quad A = Actions
+
+%\cmodels
+\bigskip
+\citetcrsigb
 \end{frame}
 
 
@@ -50,35 +49,74 @@ S = Sorts \quad CS = Cooperative sorts \quad P = Processes \quad A = Actions
 \begin{frame}[c]
   \frametitle{Summary}
 
-\begin{enumerate}[1.]
-  \item Inference of the \tval{complete Interaction Graph}
-  \item Inference of the \tval{possibly partial Parametrization}
-  \item Enumerate all full \& \tval{admissible Parametrizations}
-\end{enumerate}
-\quad\quad\f Exhaustive approaches
+\todo{À revoir}
+
+\begin{itemize}
+  \item The Process Hitting framework
+  \begin{fleches}
+    \item Restricted concurrent actions
+    \item Efficient static analysis on biological models (few expression levels)
+  \end{fleches}
+  
+  \smallskip
+  \item But raw Process Hitting is insufficient to models ADNs
+  \begin{fleches}
+    \item How to represent cooperations?
+    \item Cooperative sorts only represent a combination of past states
+  \end{fleches}
+  
+  \smallskip
+  \item Solution: prioritised actions
+  \begin{fleches}
+    \item Accurate cooperative sorts
+    \item Expressivity of ADN is reached
+  \end{fleches}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[c]
+  \frametitle{Conclusion}
+
+\todo{Cohérence avec traduction CMSB}
+
+\begin{itemize}
+  \item Achieved:
+  \begin{itemize}
+    \item Rise the expressivity of PH
+    \item Efficient reachability analysis in ADNs
+  \end{itemize}
+  
+  \smallskip
+  \item Value:
+  \begin{itemize}
+    \item Model a whole class of ADNs in one PH model
+    \item Efficiently analyse reachability for the whole class
+    \item Refine the PH model to match desired behaviour
+    \item Infer the underlying class of ADNs\\\tcite{\citefpimrcmsb}
+  \end{itemize}
+\end{itemize}
+
+
 
 \pause
 \bigskip
 \begin{flushright}
 \Large
-\textcolor{couleurtheme}{Conclusion}\hspace*{2.7em}
+\textcolor{couleurtheme}{Outlook}\hspace*{2.7em}
 \end{flushright}
 
-\medskip
-Existing translation: René Thomas $\rightsquigarrow$ Process Hitting
-
-\smallskip
-New translation: Process Hitting $\rightsquigarrow$ René Thomas
-
-\smallskip
-\begin{fleches}
-  \item New \tval{formal link} between the two models
-  \item More \tval{visibility} to the Process Hitting
-\end{fleches}
+\begin{itemize}
+  \item What of $n$ classes of priority?
+  \item $2$ priorities: first attempt to add priorities in the PH framework
+  \item $n$ priorities: models delays in actions
+\end{itemize}
 \end{frame}
 
 
 
+\begin{comment}
 \section[x]{Acknowledgments}
 
 \begin{frame}[c]
@@ -111,3 +149,4 @@ New translation: Process Hitting $\rightsquigarrow$ René Thomas
   \end{tabular}}\right\}\text{\tval{MeForBio}}$}
 \end{tabular}
 \end{frame}
+\end{comment}
