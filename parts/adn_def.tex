@@ -78,13 +78,12 @@
 
 \begin{frame}
   \frametitle{The Asynchronous Discrete Networks (ADN)}
-  \framesubtitle{\tcite{\todo{}}}
 
 \todo{Example de GE sur l'exemple ?}
 
-Studying an ADN:
+Size of the state graph:
 
-$$|\Fadn| = \prod_{a \in N} l_a$$
+$$|\Fadn| = \prod_{a \in N} n_a \quad\geq 2^{|N|}$$
 
 \f Exponential!
 
@@ -92,10 +91,13 @@ For Boolean models: $|\Fadn| = 2^{|N|}$
 
 For multivalued models: … even more! $|\Fadn| \geq 2^{|N|}$
 
-Some results can be found without the state graph
+\bigskip
+The structure of the ADN can give some results on its behaviour.
 
-\todo{Bernot et al sur attracteurs cycliques et états stables}
+\quad e.g.: \tcite{\citerichardcomet}
 
-But when it comes to reachability, the SG is mandatory
+But methods related to reachability rely on the State Graph
+
+\quad e.g.: \todo{Logiques CTL ? SMBionet ?}
 
 \end{frame}
