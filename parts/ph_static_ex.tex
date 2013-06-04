@@ -1,13 +1,13 @@
 % Exemples de structures abstraites (graphes de causalité locale)
 
-\begin{frame}
+\begin{frame}[t]
   \frametitle{Under-approximation}
 
-\def \tu {2}
-\def \tub {3}
-\def \tuf {4}
+\def \tu {3}
+\def \tub {4}
+\def \tuf {5}
 
-\begin{columns}
+\begin{columns}[t]
 \begin{column}{0.48\textwidth}
 \begin{center}
 \scalebox{0.55}{
@@ -23,7 +23,8 @@
 \end{column}
 \begin{column}{0.52\textwidth}
 
-\vspace{1.5em}
+\uncover<2->{
+%\vspace{1em}
 \tval{Sufficient condition}:
 
 \smallskip
@@ -32,82 +33,27 @@
   \item \only<-\tu>{each objective has a solution} \only<\tub->{\sout{each objective has a solution}}
 \end{itemize}
 \begin{center}
-  \only<\tu>{\Large\textcolor{darkgreen}{$R$ is \textbf{true}}} \only<\tuf>{\Large\textcolor{darkyellow}{\textbf{Inconclusive}}}
+  \Large\only<\tu>{\textcolor{darkgreen}{$R$ is \textbf{true}}} \only<\tuf>{\textcolor{darkyellow}{\textbf{Inconclusive}}}
 \end{center}
+}
 
 \end{column}
 \end{columns}
 
-\begin{center}
-\scalebox{\scaleex}{
-\only<-\tu>{
-\sauyes
-}
-\only<\tub->{
-\sauinconc
-}}
-\end{center}
+\begin{center}%
+\scalebox{\scaleex}{%
+\only<-\tu>{%
+\scalebox{\scaleex}{%
+\begin{tikzpicture}[aS]
+  \path[use as bounding box] (.7,0) rectangle (5.8,3.5);
 
-\end{frame}
-
-
-
-\begin{frame}
-  \frametitle{Over-approximation}
-
-\def \to {4}
-\def \tob {5}
-\def \tof {6}
-\def \tokp {7}
-
-\begin{columns}
-\begin{column}{0.48\textwidth}
-\begin{center}
-\scalebox{0.55}{
-\begin{tikzpicture}
-\exatt
-\TState{-\to}{a_1,b_0,c_0,d_1}
-\TState{\tob-}{a_1,b_1,c_1,d_0}
-\node[process,very thick] (d_2) at (d_2.center) {?};
+  \glclegend{}{$d_2$}{$\PHobj{d_0}{d_2}$}
 \end{tikzpicture}
 }
-\end{center}
-\bigskip
-
-\end{column}
-\begin{column}{0.52\textwidth}
-
-\tval{Necessary condition}:
-
-\smallskip
-\only<2->{
-\only<3-\to>{\sout{There exists a traversal}}\only<2,\tob->{There exists a traversal}
-with no cycle
-
-\smallskip
-\begin{itemize}
-  \item \only<3-\to>{\sout{objective $\rightarrow$ follow one solution}}\only<1-2,\tob->{objective $\rightarrow$ follow one solution}
-  \item solution $\rightarrow$ follow all processes
-  \item process $\rightarrow$ follow all objectives
-\end{itemize}
-\begin{center}
-  \only<\to>{\Large\textcolor{red}{$R$ is \textbf{false}}}\only<\tof->{\Large\textcolor{darkyellow}{\textbf{Inconclusive}}}
-\end{center}
+~~~\sauyes
 }
-
-\end{column}
-\end{columns}
-
-%\bigskip
-
-\begin{center}
-\scalebox{\scaleex}{
-\only<1-\to>{
-\saono
-}
-\only<\tob->{
-\saoinconc
+\only<\tub->{
+  \sauinconc
 }}
 \end{center}
-
 \end{frame}

@@ -2,7 +2,7 @@
 
 %%% Exemple pour la définition du Process Hitting %%%
 \def \exphdef {
-\path[use as bounding box] (-0.5,-0.5) rectangle (6.5,4.5);
+\path[use as bounding box] (-0.5,-0.25) rectangle (6.5,4.75);
 
 \TSort{(0,3)}{a}{2}{l}
 \TSort{(0,0)}{b}{2}{l}
@@ -264,6 +264,38 @@
 
 
 
+% Légende pour les GLC
+\newcommand{\lvalign}{1 cm}
+\newcommand{\lhfirst}{3 cm}
+\newcommand{\lhsep}{.7 cm}
+%\newcommand{\lvin}{.2}
+%\newcommand{\lvout}{1.8}
+\newcommand{\lvalignl}{2.2 cm}
+\tikzstyle {llegend}=[anchor=west,align=left]
+\tikzstyle {legendbox}=[rounded corners,thick,draw=couleurtheme]
+
+\def \glclegend#1#2#3{
+  \node[Aproc] at (\lvalign,\lhfirst) (exproc) {#2};
+  \node[Aobj] at (\lvalign,\lhfirst-\lhsep) (exobj) {#3};
+  \node[Asol] at (\lvalign,\lhfirst-2*\lhsep) (exsol) {};
+
+  \node[llegend] at (\lvalignl,\lhfirst) {Required process};
+  \node[llegend] at (\lvalignl,\lhfirst-\lhsep) {Objective};
+  \node[llegend] at (\lvalignl,\lhfirst-2*\lhsep) {Solution to an objective};
+
+  \ifthenelse{\equal{#1}{prio}}{%
+    \node[Aproc] at (\lvalign-.3cm,\lhfirst-3*\lhsep) (aprio1) {$ab_{11}$};
+    \node[Asol] at (\lvalign+.7cm,\lhfirst-3*\lhsep) (aprio2) {};
+    \path (aprio1) edge[aSPrio] (aprio2);
+    \node[llegend] at (\lvalignl,\lhfirst-3*\lhsep) {\phantom{Mg}\\Solution to a prioritised\\cooperative sort process};
+    \path[legendbox] (0,0) rectangle (5.8,3.6);
+  }{%
+    \path[legendbox] (0,1) rectangle (5.8,3.6);
+  }
+}
+
+
+
 %%% Exemple atteignabilité
 \def \exatt {
 \path[use as bounding box] (-1,-3) rectangle (7,2.7);
@@ -302,7 +334,7 @@
 %%% Figure de présentation de l'analyse d'atteignabilité
 \def \figsa {
 \begin{tikzpicture}
-\path[use as bounding box] (-5,-3.5) rectangle (5,3.5);
+\path[use as bounding box] (-7,-3.3) rectangle (6.3,3);
 \definecolor{r2}{RGB}{238,10,38}
 
 \path<2->[shading=1, inner color=r2, outer color=white] (3.5,-2.8) -- (4.4,3.2) -- (0,3) -- (-4.5,1.4) -- (-2.5,-2.5) -- (0,-3.6) -- (2.8,-2.8);
@@ -365,8 +397,8 @@
 \node[Aproc,above right of=d02s2] (b0) {$b_0$};
 \node[Aobj,right of=b0] (b10) {$\PHobjectif{b_1}{b_0}$};
 \node[Asol,right of=b10] (b10s) {};
-\node[Aproc,right of=b10s] (a1) {$a_1$};
-\node[Aobj,right of=a1] (a11) {$\PHobjectif{a_1}{a_1}$};
+\node[Aproc,right of=b10s,node distance=.9cm] (a1) {$a_1$};
+\node[Aobj,right of=a1,node distance=1.3cm] (a11) {$\PHobjectif{a_1}{a_1}$};
 \node[Asol,right of=a11] (a11s) {};
 
 \node[Aobj,above of=b10,yshift=-0.5cm] (b00)
@@ -378,8 +410,8 @@
 \node[Asol,right of=b11] (b11s) {};
 \node[Aobj,below of=b11] (b01) {$\PHobjectif{b_0}{b_1}$};
 \node[Asol,right of=b01] (b01s) {};
-\node[Aproc,right of=b01s] (c1) {$c_1$};
-\node[Aobj,right of=c1] (c11) {$\PHobjectif{c_1}{c_1}$};
+\node[Aproc,right of=b01s,node distance=.9cm] (c1) {$c_1$};
+\node[Aobj,right of=c1,node distance=1.3cm] (c11) {$\PHobjectif{c_1}{c_1}$};
 \node[Asol,right of=c11] (c11s) {};
 
 \path
@@ -477,6 +509,7 @@
 %\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,1.15);
 
 \node[Aobj] (d12) {$\PHobjectif{d_1}{d_2}$};
+\node[Aproc, above of=d12, node distance=1.5cm] (d2) {$d_2$};
 \node[Asol,above right of=d12] (d12s1) {};
 \node[Aproc, right of=d12s1] (b2) {$b_2$};
 \node[Aobj,right of=b2] (b02) {$\PHobjectif{b_0}{b_2}$};
@@ -497,6 +530,7 @@
 \node at (a10.east) {\Large\color{red}\textbf{$\bot$}};
 
 \path
+(d2) edge (d12)
 (d12) edge (d12s1) edge (d12s2) (d12s1) edge (b2) edge (c1) (d12s2) edge (b1)
 (b01) edge (b01s) (b01s) edge (c1)
 (b02) edge (b02s) (b02s) edge (d1)
@@ -518,6 +552,7 @@
 %\path[use as bounding box] (-0.5,-2.1) rectangle (10.25,1.15);
 
 \node[Aobj] (d02) {$\PHobjectif{d_0}{d_2}$};
+\node[Aproc, left of=d02, node distance=1.5cm] (d2) {$d_2$};
 \node[Asol,above right of=d02] (d02s1) {};
 
 \node[Aproc, right of=d02s1] (b2) {$b_2$};
@@ -528,12 +563,10 @@
 \node[Asol,right of=d01] (d01s) {};
 
 \node[Asol,below right of=d02] (d02s2) {};
-%<-3>
 \node<-\tof>[Aproc, right of=d02s2] (b0) {$b_0$};
 \node<\tokp>[orange, thick, Aproc, right of=d02s2] (b0) {$b_0$};
 \node[Aobj,right of=b0] (b10) {$\PHobjectif{b_1}{b_0}$};
 \node[Asol,right of=b10] (b10s) {};
-%<-3>
 \node<-\tof>[Aproc,right of=b10s] (a1) {$a_1$};
 \node<\tokp>[orange, thick, Aproc,right of=b10s] (a1) {$a_1$};
 \node[Aobj,right of=a1] (a11) {$\PHobjectif{a_1}{a_1}$};
@@ -551,6 +584,7 @@
 ;}
 
 \path
+(d2) edge (d02)
 (d02) edge (d02s1) edge (d02s2) (d02s1) edge (b2) (d02s2) edge (b1) edge (b0)
 (a11) edge (a11s)
 (b10) edge (b10s) (b10s) edge (a1)

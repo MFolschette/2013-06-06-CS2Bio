@@ -2,11 +2,11 @@
 
 \subsubsection{Successive reachability}
 
-\begin{frame}
-  \frametitle{Static analysis: successive reachability}
+\begin{frame}[t]
+  \frametitle{Static analysis: successive reachability of processes}
   \framesubtitle{\tcite{\citepmrmscs}}
 
-Successive reachability of processes:
+%Successive reachability of processes:
 
 \begin{columns}
 \begin{column}{0.55\textwidth}
@@ -51,7 +51,7 @@ Successive reachability of processes:
 ~\\~\\~\\~\\
 \begin{itemize}
   \item Initial context
-    \\ \rex{\PHetat{a_1, \{b_0, b_1\}, c_0, z_0}} \pause
+    \\ \rex{\PHetat{a_1, \{b_0, b_1\}, c_0, d_0}} \pause
   \item Objectives
     \\ \rex{$[\ \Rsh d_1 \PHconcat\ \Rsh b_1 \PHconcat\ \Rsh d_2\ ]$} \pause
     \\\smallskip \rex{$[\ \Rsh d_2\ ]$} \pause
@@ -65,12 +65,12 @@ Successive reachability of processes:
 \f Concretization of the objective = scenario
 
 \ex{
-\only<5>{\underline{$\PHfrappe{a_0}{c_0}{c_1}$}}\only<-4,6->{$\PHfrappe{a_0}{c_0}{c_1}$}~\PHconcat~
-\only<6>{\underline{$\PHfrappe{b_0}{d_0}{d_1}$}}\only<-5,7->{$\PHfrappe{b_0}{d_0}{d_1}$}~\PHconcat~
-\only<7>{\underline{$\PHfrappe{c_1}{b_0}{b_1}$}}\only<-6,8->{$\PHfrappe{c_1}{b_0}{b_1}$}~\PHconcat~
-\only<8>{\underline{$\PHfrappe{b_1}{d_1}{d_2}$}}\only<-7,9->{$\PHfrappe{b_1}{d_1}{d_2}$}}
+$ \only<5>{\underline{\PHfrappe{a_0}{c_0}{c_1}}} \only<-4,6->{\PHfrappe{a_0}{c_0}{c_1}} \PHconcat %
+  \only<6>{\underline{\PHfrappe{b_0}{d_0}{d_1}}}\only<-5,7->{\PHfrappe{b_0}{d_0}{d_1}} \PHconcat %
+  \only<7>{\underline{\PHfrappe{c_1}{b_0}{b_1}}}\only<-6,8->{\PHfrappe{c_1}{b_0}{b_1}} \PHconcat %
+  \only<8>{\underline{\PHfrappe{b_1}{d_1}{d_2}}}\only<-7,9->{\PHfrappe{b_1}{d_1}{d_2}}
+$}
 \end{center}
-
 \end{frame}
 
 
@@ -81,19 +81,19 @@ Successive reachability of processes:
 
 Static analysis by abstractions:
 \begin{fleches}
-  \item Directly checking an objective sequence $R$ is hard
-  \item Rather check the approximations $P$ and $Q$, where \tval{$P \Rightarrow R \Rightarrow Q$}:
+  \item Directly checking an objective sequence $R$ is hard (\tval{State Graph})
+  \item Rather check the approximations $P$ and $Q$, where $P \Rightarrow R \Rightarrow Q$:
 \end{fleches}
 
 \begin{center}
-\scalebox{0.6}{
-\figsa
+\scalebox{0.7}{
+  \figsa
 }
 \end{center}
 
-\only<-7>{~}
-\only<8->{
-Polynomial w.r.t.~the number of sorts and \\exponential w.r.t.~the number of processes in each sort
+\uncover<8->{
+%Polynomial w.r.t.~the number of sorts and \\exponential w.r.t.~the number of processes in each sort
+Computing $P$ or $Q$ is \tval{polynomial} in the number of \tval{sorts} \\and \tval{exponential} in the number of \tval{processes in each sort}
 \begin{fleches}
   \item Efficient for big models with few levels of expression
 \end{fleches}

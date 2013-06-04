@@ -3,8 +3,6 @@
 \begin{frame}[c]
   \frametitle{Implementation}
 
-\todo{À revoir}
-
 Complexity:
 
 \begin{itemize}
@@ -22,34 +20,32 @@ Complexity:
 \pause
 \bigskip
 \small
-\todo{Adapter}
-
 \begin{tabular}{r||c|c|c|c||c|c|c|}
 \hline
-\tval{Model} & Sorts & Procs & Actions & States & libddd$^1$ & \Pint \\\hline
-%\tval{\ex{egfr20}} & 35 & 196 & 670 & $2^{64}$ & [3s--$\infty$] & [1s--150s] & \tval{0.007s} \\\hline
-%\tval{\ex{tcrsig40}} & 54 & 156 & 301 & $2^{73}$ & [1s--$\infty$] & [0.6s--$\infty$] & \tval{0.004s} \\\hline
-\tval{\ex{tcrsig94}} & 133 & 448 & 1124 & $2^{194}$ & 13min -- $\infty$ & \tval{0.8s} \\\hline
+\tval{Model} & Sorts & Procs & Actions & States & libddd$^1$ & GINsim$^2$ & \Pint \\\hline
+\tval{\ex{egfr20}} & 35 & 196 & 670 & $2^{64}$ & & $<$1s & \tval{0.35s} \\\hline
+\tval{\ex{tcrsig40}} & 54 & 156 & 301 & $2^{73}$ & & $\infty$ & \tval{0.2s} \\\hline
+\tval{\ex{tcrsig94}} & 133 & 448 & 1124 & $2^{194}$ & [13min -- $\infty$] & & \tval{0.8s} \\\hline
 %\tval{\ex{egfr104}} & 193 & 748 &  2356 & $2^{320}$ &  $\infty$ & $\infty$ & \tval{0.050s}\\\hline
 \end{tabular}
 
 \medskip
-\quad$^1$ LIP6/Move
+\quad$^1$ LIP6/Move\\
+\quad$^2$ TAGC/IGC
 
-\todo{taille mémoire ? nbr sortes coopératives ?}
 %S = Sorts \quad CS = Cooperative sorts \quad P = Processes \quad A = Actions
 
 %\cmodels
 \bigskip
-\citetcrsigb
+\citeegfra\\
+\citetcrsiga\\
+\citetcrsigb\\
 \end{frame}
 
 
 
 \begin{frame}[c]
   \frametitle{Summary}
-
-\todo{À revoir}
 
 \begin{itemize}
   \item The Process Hitting framework
@@ -79,8 +75,6 @@ Complexity:
 \begin{frame}[c]
   \frametitle{Conclusion}
 
-\todo{Cohérence avec traduction CMSB}
-
 \begin{itemize}
   \item Achieved:
   \begin{itemize}
@@ -94,7 +88,7 @@ Complexity:
     \item Model a whole class of ADNs in one PH model
     \item Efficiently analyse reachability for the whole class
     \item Refine the PH model to match desired behaviour
-    \item Infer the underlying class of ADNs\\\tcite{\citefpimrcmsb}
+    \item Infer the underlying class of ADNs\\\quad\tcite{\citefpimrcmsb}
   \end{itemize}
 \end{itemize}
 
@@ -108,45 +102,9 @@ Complexity:
 \end{flushright}
 
 \begin{itemize}
-  \item What of $n$ classes of priority?
-  \item $2$ priorities: first attempt to add priorities in the PH framework
-  \item $n$ priorities: models delays in actions
+  \item Allow prioritised actions even for biological evolutions
+  \item Allow $n>2$ classes of priority
+  %\item $2$ priorities: first attempt to add priorities in the PH framework
 \end{itemize}
+\qquad~\f Model actions with delays by using priorities
 \end{frame}
-
-
-
-\begin{comment}
-\section[x]{Acknowledgments}
-
-\begin{frame}[c]
-  \frametitle{Joint work}
-
-\tval{Inoue Laboratory}: National Institute of Informatics / Sokendai / Tokyo (Japan)
-
-\smallskip
-\tval{MeForBio}: IRCCyN / École Centrale de Nantes / Nantes (France)
-
-\smallskip
-\tval{BISON}: Institut für Automatik / ETH / Zürich (Switzerland)
-
-\bigskip\bigskip\footnotesize
-\begin{tabular}{cc}
-  $\left.\text{\begin{tabular}{c}
-    \includegraphics[height=1.5cm]{figs/Inoue-sensei.jpg} \\ \tval{Katsumi INOUE} \\ Professor \& team leader
-  \end{tabular}}\right\}\text{\tval{Inoue Laboratory}}$
-  &
-  $\left.\text{\begin{tabular}{c}
-    \includegraphics[height=1.5cm]{figs/Loic.jpg} \\ \tval{Loïc PAULEVÉ} \\ Post-doc
-  \end{tabular}}\right\}\text{\tval{BISON}}$
-  \\ & \\ & \\
-  \multicolumn{2}{l}{$\left.\text{\begin{tabular}{ccc}
-      \includegraphics[height=1.5cm]{figs/Olivier.jpg}
-    & \includegraphics[height=1.5cm]{figs/Morgan.jpg}
-    & \includegraphics[height=1.5cm]{figs/Moi.jpg} \\
-      \tval{Olivier ROUX} & \tval{Morgan MAGNIN} & \tval{Maxime FOLSCHETTE} \\
-      Professor \& team leader & Associate professor & 2\textsuperscript{nd} year PhD student
-  \end{tabular}}\right\}\text{\tval{MeForBio}}$}
-\end{tabular}
-\end{frame}
-\end{comment}

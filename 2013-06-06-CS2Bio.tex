@@ -1,4 +1,4 @@
-\documentclass[fleqn,8pt,t]{beamer}
+\documentclass[fleqn,8pt,c]{beamer}
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -44,14 +44,15 @@
 % Commande À FAIRE
 \usepackage{color} % Couleurs du texte
 %\newcommand{\afaire}[1]{\textcolor{red}{[À FAIRE : #1]}}
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO\ifthenelse{\equal{#1}{}}{}{: #1}]}}}
+%\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO\ifthenelse{\equal{#1}{}}{}{: #1}]}}}
 
 
 
 \colorlet{couleurtheme}{gray}  % Couleur principale du thème
 \colorlet{couleurcit}{gray}  % Couleur des citations
-\colorlet{couleurex}{blue}  % Couleur des citations
-\colorlet{couleurliens}{darkblue}  % Couleur des citations
+\colorlet{couleurex}{blue}  % Couleur des exemples
+\colorlet{couleurredex}{red}  % Couleur des exemples
+\colorlet{couleurliens}{darkblue}  % Couleur des liens
 
 \usetheme{Pittsburgh}   % Thème général
 \usefonttheme{default}  % Thème de polices
@@ -94,11 +95,11 @@
 \newcommand{\ex}[1]{\textcolor{couleurex}{#1}}
 \newcommand{\qex}[1]{\quad \ex{#1}}
 \newcommand{\rex}[1]{\hfill \ex{#1}}
-\newcommand{\redex}[1]{\textcolor{red}{#1}}
+\newcommand{\redex}[1]{\textcolor{couleurredex}{#1}}
 
 \newcommand{\lien}[1]{\textcolor{couleurliens}{\underline{\url{#1}}}}
 
-\newcommand{\console}[1]{\textcolor{darkgray}{#1}}
+%\newcommand{\console}[1]{\textcolor{darkgray}{#1}}
 
 % Style des citations
 \newcommand{\tscite}[1]{\textcolor{couleurcit}{#1}}
@@ -128,7 +129,7 @@
 
 
 
-\setbeamertemplate{footline}{\color{gray}%
+\setbeamertemplate{footline}{\color{couleurtheme}%
 \scriptsize
 \quad\strut%
 \insertauthor%
@@ -141,14 +142,14 @@
 
 \newcommand{\headersep}{$\circ$} % \bullet \triangleright
 
-\setbeamertemplate{headline}{\color{gray}%
+\setbeamertemplate{headline}{\color{couleurtheme}%
 \vskip0.3em%
 \quad\strut%
 {\scriptsize\color{black}%
 % Gris si une section existe
 \ifthenelse{\equal{\thesection}{0}}{}{%
 \ifthenelse{\equal{\lastsection}{x}}{}{%
-\color{gray}%
+\color{couleurtheme}%
 }}%
 \insertshorttitle
 \ifthenelse{\equal{\thesection}{0}}{}{%
@@ -157,7 +158,7 @@
 % Gris si une sous-section existe
 \ifthenelse{\equal{\thesubsection}{0}}{\color{black}}{%
 \ifthenelse{\equal{\lastsubsection}{x}}{\color{black}}{%
-\color{gray}%
+\color{couleurtheme}%
 }}%
 \insertsectionhead%
 %
@@ -240,30 +241,35 @@ Loïc PAULEVÉ, Morgan MAGNIN, Olivier ROUX
 
 \newcommand{\citemodels}{\bigskip\citeegfra\\\citeegfrb\\\citetcrsiga\\\citetcrsigb}
 
-\newcommand{\citepmrtcsb}{Paulevé, Magnin, Roux in Transactions on Computational Systems Biology, 2011}
-\newcommand{\citepmrmscs}{Paulevé, Magnin, Roux in Mathematical Structures in Computer Science, 2012}
-\newcommand{\citefpimrcmsb}{{\scriptsize Folschette, Paulevé, Inoue, Magnin, Roux in Computational Methods in Systems Biology, 2012}}
+\newcommand{\citepmrtcsb}{Paulevé, Magnin, Roux in \textit{Transactions on Computational Systems Biology}, 2011}
+\newcommand{\citepmrmscs}{Paulevé, Magnin, Roux in \textit{Mathematical Structures in Computer Science}, 2012}
+\newcommand{\citefpimrcmsb}{{\small Folschette, Paulevé, Inoue, Magnin, Roux\\in \textit{Computational Methods in Systems Biology}, 2012}}
 %\newcommand{\crcbmfma}{Richard, Comet, Bernot in Modern Formal Methods and App., 2006}
-\newcommand{\citedejong}{De Jong in Journal of Computational Biology, 2002}
-\newcommand{\citerichardcomet}{Richard, Comet. Discrete Applied Mathematics, 2007}
+\newcommand{\citedejong}{De Jong in \textit{Journal of Computational Biology}, 2002}
+\newcommand{\citerichardcomet}{Richard, Comet in \textit{Discrete Applied Mathematics}, 2007}
+\newcommand{\citeremy}{Remy, Ruet, Thieffry in \textit{Advances in Applied Mathematics}, 2008}
+\newcommand{\citesmbionet}{Bernot, Comet, Richard, Guespin in \textit{Journal of Theoretical Biology}, 2004}
+\newcommand{\citeito}{Ito, Izumi, Hagihara, Yonezaki in \textit{BioInformatics and BioEngineering}, 2010}
 
 
 
 \section{Introduction}
 \input{parts/intro.tex}
 
-\section{Frameworks Definitions}
-\subsection{Asynchronous Discrete Networks (ADN)}
+%%%\section{Frameworks Definitions}
+
+\section{Asynchronous Discrete Networks (ADN)}
 \input{parts/adn_def.tex}
-\subsection{The Process Hitting framework (PH)}
-%\input{parts/ph_def.tex}
-%\input{parts/ph_static.tex}
-%\input{parts/ph_static_ex.tex}
-%\input{parts/ph_ccl.tex}
+
+\section{The Process Hitting framework (PH)}
+\input{parts/ph_def.tex}
+\input{parts/ph_static.tex}
+\input{parts/ph_static_ex.tex}
+\input{parts/ph_ccl.tex}
 
 \section{Adding priorities to the Process Hitting}
-%\input{parts/prio_def.tex}
-%\input{parts/prio_static.tex}
+\input{parts/prio_def.tex}
+\input{parts/prio_static.tex}
 
 \section{Summary \& Conclusion}
 \input{parts/ccl.tex}
@@ -271,8 +277,8 @@ Loïc PAULEVÉ, Morgan MAGNIN, Olivier ROUX
 \appendix
 \section[x]{Bibliography}
 \input{parts/biblio.tex}
-%\section[Annex: Graphs of local causality]{Graphs of local causality}
-%\input{parts/annex_ph.tex}
+\section[Annex: Graphs of local causality]{Examples of graphs of local causality}
+\input{parts/annex_static.tex}
 
 
 

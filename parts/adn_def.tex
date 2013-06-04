@@ -1,51 +1,46 @@
 % Définition du Réseaux Discrets Asynchrones
 
 \newcommand{\Fadn}{\mathbb{F}}
+\newcommand{\Eadn}{\mathbb{E}}
+\newcommand{\SGadn}{\mathrm{G}}
 
-\begin{frame}
+\begin{frame}[c]
   \frametitle{The Asynchronous Discrete Networks (ADN)}
   \framesubtitle{\tcite{\citedejong}}
 
 \begin{itemize}
-  \item The set of components: $N = \{ a, b, c, \dots \}$
-  \item The local states (of one component $a$): $x^a \in \Fadn^a = \segm{0}{l_a}$
-  \item The global states (of all components): $\Fadn = \Fadn^a \times \Fadn^b \times \Fadn^c \times \dots$  % \underset{a \in N}{\times}
-  \item The evolution function (of one component $a$): $f^a : \Fadn \rightarrow \Fadn^a$
+  \item A set of components \qex{$N = \{ a, b, z \}$}
+  \item A set of expression levels for each component \qex{$z \in \Fadn^z = \segm{0}{2}$}
+  \item The set of global states \qex{$\Fadn = \Fadn^a \times \Fadn^b \times \Fadn^z$}
+  \item An evolution function for each component \qex{$f^z : \Fadn \rightarrow \Fadn^z$}
 \end{itemize}
 
 \begin{center}
 \begin{tabular}{ccc}
-  \begin{tabular}[b]{c|c|c}
-    \multicolumn{2}{c|}{$X$} & \multirow{2}{*}{$f^a(X)$} \\
-  \cline{1-2}
-    $x^a$ & $x^b$ & \\
+  \ex{$f^a = \neg b$} & \ex{$f^b = b \vee \neg a$} & \ex{$f^z = a + b$} \vspace{.5em}\\
+  \begin{tabular}[t]{c|c}
+    $b$ & $f^a(b)$ \\
   \hline
-    $0$ & $0$ & $1$ \\
-    $0$ & $1$ & $0$ \\
-    $1$ & $0$ & $0$ \\
-    $1$ & $1$ & $0$
+    $0$ & $\mathbf{1}$ \\
+    $1$ & $\mathbf{0}$ \\
   \end{tabular}
 &
-  \begin{tabular}[b]{c|c|c}
-    \multicolumn{2}{c|}{$X$} & \multirow{2}{*}{$f^b(X)$} \\
-  \cline{1-2}
-    $x^a$ & $x^b$ & \\
+  \begin{tabular}[t]{cc|c}
+    $a$ & $b$ & $f^b(a, b)$ \\
   \hline
-    $0$ & $0$ & $1$ \\
-    $0$ & $1$ & $0$ \\
-    $1$ & $0$ & $0$ \\
-    $1$ & $1$ & $0$
+    $0$ & $0$ & $\mathbf{1}$ \\
+    $0$ & $1$ & $\mathbf{1}$ \\
+    $1$ & $0$ & $\mathbf{0}$ \\
+    $1$ & $1$ & $\mathbf{1}$
   \end{tabular}
 &
-  \begin{tabular}[b]{c|c|c}
-    \multicolumn{2}{c|}{$X$} & \multirow{2}{*}{$f^z(X)$} \\
-  \cline{1-2}
-    $x^a$ & $x^b$ & \\
+  \begin{tabular}[t]{cc|c}
+    $a$ & $b$ & $f^z(a, b)$ \\
   \hline
-    $0$ & $0$ & $0$ \\
-    $0$ & $1$ & $1$ \\
-    $1$ & $0$ & $1$ \\
-    $1$ & $1$ & $2$
+    $0$ & $0$ & $\mathbf{0}$ \\
+    $0$ & $1$ & $\mathbf{1}$ \\
+    $1$ & $0$ & $\mathbf{1}$ \\
+    $1$ & $1$ & $\mathbf{2}$
   \end{tabular}
 \end{tabular}
 
@@ -61,43 +56,56 @@
     node[elabel, below=-1em of b] {$\segm{0}{1}$}
     node[elabel, below=-1em of z] {$\segm{0}{2}$};
   \path
-    (a) edge[loop left] (a)
+    (a) edge[bend right=15] (b)
+    (b) edge[bend right=15] (a)
     (b) edge[loop left] (b)
-    (a) edge[bend right] (b)
-    (b) edge[bend right] (a)
     (a) edge (z)
     (b) edge (z);
 \end{tikzpicture}
 \end{center}
-
-\todo{Retirer les arcs vers $a$ et $b$ ?}
-
 \end{frame}
 
 
 
-\begin{frame}
+\begin{frame}[c]
   \frametitle{The Asynchronous Discrete Networks (ADN)}
 
-\todo{Example de GE sur l'exemple ?}
+State Graph: $\SGadn = (\Fadn, \Eadn)$, where one component evolves at a time given its function $f^a$
+$$(x, y) \in \Eadn \Longleftrightarrow \exists a \in N, y^a = f^a(x) \wedge \forall b \neq a, y^b = x^b$$
 
-Size of the state graph:
+%\f Only one component at a time $a$ evolves to reach the value of its evolution function $f^a(x)$
 
-$$|\Fadn| = \prod_{a \in N} n_a \quad\geq 2^{|N|}$$
+\pause
+\medskip
+%\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcc}
+%  Size of the State Graph: & $\displaystyle|\Fadn| = \prod_{a \in N} |\Fadn^a| \quad\geq 2^{|N|}$ &
+%\end{tabular*}
+Size of the State Graph: \quad $\displaystyle|\Fadn| = \prod_{a \in N} |\Fadn^a| \quad\geq 2^{|N|}$
 
-\f Exponential!
+\medskip
+\f Exponential in the number $|N|$ of components
 
-For Boolean models: $|\Fadn| = 2^{|N|}$
-
-For multivalued models: … even more! $|\Fadn| \geq 2^{|N|}$
-
+\pause
 \bigskip
-The structure of the ADN can give some results on its behaviour.
+Some works give a link between the structure and the behaviour of an ADN
+\begin{itemize}
+  \item \tval{Thomas' conjecture} (condition for multiple fixed points or attractive cycle)
+  \begin{itemize}
+    \item Boolean: \tcite{\citeremy}
+    \item Multivalued: \tcite{\citerichardcomet}
+  \end{itemize}
+\end{itemize}
 
-\quad e.g.: \tcite{\citerichardcomet}
-
+\pause
+\medskip
 But methods related to reachability rely on the State Graph
 
-\quad e.g.: \todo{Logiques CTL ? SMBionet ?}
-
+e.g.: \ex{Starting from $(a, b, z) = (0, 0, 0)$, can the system reach $z = 2$ ?}
+\begin{itemize}
+  \item \tval{Temporal logics}
+  \begin{itemize}
+    \item CTL: \tcite{\citesmbionet}
+    \item LTL: \tcite{\citeito}
+  \end{itemize}
+\end{itemize}
 \end{frame}

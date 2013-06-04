@@ -19,34 +19,16 @@
 \begin{tikzpicture}
   \path[use as bounding box] (-0.5,-0.5) rectangle (8.5,3.5);
   \tikzstyle{current process}=[process,fill=gray]
-  \exphcoopprio{prio}{abstr}
+  \exphcoopprio{prio}{}
   \TState{1-}{a_0, b_0, ab_0, z_0}
 \end{tikzpicture}}
-%
+\hfill
+\scalebox{\scaleex}{
 \scalebox{\scaleex}{
 \begin{tikzpicture}[aS]
-  \newcommand{\lvalign}{1 cm}
-  \newcommand{\lhfirst}{3 cm}
-  \newcommand{\lhsep}{.7 cm}
-  %\newcommand{\lvin}{.2}
-  %\newcommand{\lvout}{1.8}
-  \newcommand{\lvalignl}{2.2 cm}
-  
-  \path[draw,use as bounding box] (0,0) rectangle (5.8,3.5);
-  %\node[draw] at (2.5,.5) {\todo{Légende ici}};
-  \node[Aproc] at (\lvalign,\lhfirst) (exproc) {$z_1$};
-  \node[Aobj] at (\lvalign,\lhfirst-\lhsep) (exobj) {$\PHobj{z_0}{z_1}$};
-  \node[Asol] at (\lvalign,\lhfirst-2*\lhsep) (exsol) {};
-  \node[Aproc] at (\lvalign-.3cm,\lhfirst-3*\lhsep) (aprio1) {$ab_{11}$};
-  \node[Asol] at (\lvalign+.7cm,\lhfirst-3*\lhsep) (aprio2) {};
-  \path (aprio1) edge[aSPrio] (aprio2);
-  
-  \tikzstyle {llegend}=[anchor=west,align=left]
-  \node[llegend] at (\lvalignl,\lhfirst) {Required process};
-  \node[llegend] at (\lvalignl,\lhfirst-\lhsep) {Objective};
-  \node[llegend] at (\lvalignl,\lhfirst-2*\lhsep) {Solution to an objective};
-  \node[llegend] at (\lvalignl,\lhfirst-3*\lhsep) {\phantom{Mg}\\Solution to a prioritised\\cooperative sort process};
+  \path[use as bounding box] (0,0) rectangle (5.8,4);
+  \glclegend{prio}{$z_1$}{$\PHobj{z_0}{z_1}$}
 \end{tikzpicture}
-}
+}}
 
 \end{frame}
