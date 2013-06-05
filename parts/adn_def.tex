@@ -10,8 +10,11 @@
 
 \begin{itemize}
   \item A set of components \qex{$N = \{ a, b, z \}$}
+\uncover<2->{
   \item A set of expression levels for each component \qex{$z \in \Fadn^z = \segm{0}{2}$}
   \item The set of global states \qex{$\Fadn = \Fadn^a \times \Fadn^b \times \Fadn^z$}
+}
+\uncover<3->{
   \item An evolution function for each component \qex{$f^z : \Fadn \rightarrow \Fadn^z$}
 \end{itemize}
 
@@ -43,6 +46,7 @@
     $1$ & $1$ & $\mathbf{2}$
   \end{tabular}
 \end{tabular}
+}
 
 \bigskip
 
@@ -51,11 +55,11 @@
   \node[inner sep=0] (z) at (2,0.75) {z};
   \node[inner sep=0] (a) at (0,1.5) {a};
   \node[inner sep=0] (b) at (0,0) {b};
-  \path
+  \path<2->
     node[elabel, above=-1em of a] {$\segm{0}{1}$}
     node[elabel, below=-1em of b] {$\segm{0}{1}$}
     node[elabel, below=-1em of z] {$\segm{0}{2}$};
-  \path
+  \path<3->
     (a) edge[bend right=15] (b)
     (b) edge[bend right=15] (a)
     (b) edge[loop left] (b)
@@ -83,7 +87,7 @@ $$(x, y) \in \Eadn \Longleftrightarrow \exists a \in N, y^a = f^a(x) \wedge \for
 Size of the State Graph: \quad $\displaystyle|\Fadn| = \prod_{a \in N} |\Fadn^a| \quad\geq 2^{|N|}$
 
 \medskip
-\f Exponential in the number $|N|$ of components
+\f \tval{Exponential} in the number $|N|$ of components
 
 \pause
 \bigskip

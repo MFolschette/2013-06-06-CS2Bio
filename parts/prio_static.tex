@@ -3,15 +3,30 @@
 \begin{frame}[c]
   \frametitle{Static analysis with prioritised actions}
 
+\tval{Sufficient condition:}
+
+\begin{itemize}
+  \item no cycle
+  \item each objective has a solution
+  \item \only<-4>{coherent edges}\only<5->{\sout{coherent edges}}
+\end{itemize}
+\vspace{1cm}
+\hspace{2cm}\uncover<5->{\textcolor{darkyellow}{\textbf{Inconclusive}}}
+\vspace{-3cm}
+
 \begin{center}\scalebox{\scaleex}{
 \begin{tikzpicture}[aS]
   \priostatic
 
-  \node<2->[Aproc,Ahl,at=(a1)] {$a_1$};
-  \node<2->[Aproc,Ahl,at=(a0)] {$a_0$};
+  \path<2-5> (ab11) edge[aSPrio,Aex] (ab11s);
+  \path<5-> (ab11) edge[aSPrio,Ahledge] (ab11s);
+
+  \node<3>[Aproc,Aex,at=(a1)] {$a_1$};
+  \node<3>[Aproc,Aex,at=(b1)] {$b_1$};
+  \node<4->[Aproc,Ahl,at=(a1)] {$a_1$};
+  \node<4->[Aproc,Ahl,at=(a0)] {$a_0$};
   %\node<2>[Aproc,Ahl,at=(b0)] {$b_0$};
   %\node<2>[Aproc,Ahl,at=(b1)] {$b_1$};
-  \path<3-> (ab11) edge[aSPrio,Ahledge] (ab11s);
 \end{tikzpicture}
 }\end{center}
 
